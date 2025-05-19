@@ -8,7 +8,7 @@ class SFJ: public Scheduler{
     void schedule(Task* tasks[], int taskCount) override {
         for(int i=0;i<taskCount;i++){ // sort tasks based on CPU burst time
             int minIdx = i;
-            for (int j = i + 1; j < taskCount; ++j) {
+            for (int j = i + 1; j < taskCount-1; ++j) {
                 if (tasks[j]->getCpuBurst() < tasks[minIdx]->getCpuBurst()) // find the task with the minimum CPU burst time
                     minIdx = j;
          }
@@ -40,8 +40,8 @@ class SFJ: public Scheduler{
             totalTurnaround+= turnTime;
     }
     /*finds the avgs*/
-    double avgWait = static_cast<double>(totalWait) / taskCount;
-    double avgTurn = static_cast<double>(totalTurnaround) / taskCount;
+    double avgWait = double(totalWait) / taskCount;
+    double avgTurn = double(totalTurnaround) / taskCount;
 
     cout << "\nAverage Waiting Time   : " << avgWait << " ms"<<endl;
     cout << "Average Turnaround Time : " << avgTurn << " ms"<<endl;
