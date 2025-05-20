@@ -3,8 +3,18 @@
 
 using namespace std;
 
+/** @class PriorityRR
+ *  @brief Implements Priority-based Round-Robin scheduling algorithm.
+ *
+ *  Tasks are sorted by descending priority, and within each priority group,
+ *  executed using Round-Robin with a 10 ms time quantum. Assumes all tasks arrive at time 0.
+ */
 class PriorityRR : public Scheduler {
     public:
+    /** @brief Executes Priority Round-Robin scheduling and prints statistics.
+     *  @param tasks      Array of Task pointers.
+     *  @param taskCount  Number of tasks in the array.
+     */
     void schedule(Task* tasks[], int taskCount) override {
         const int QUANTUM = 10;
         int currentTime = 0;
@@ -13,7 +23,7 @@ class PriorityRR : public Scheduler {
         for (int i = 0; i < taskCount; ++i)
             completion[i] = -1;
 
-            for (int i = 0; i < taskCount - 1; ++i) {
+            for (int i = 0; i < taskCount - 1; ++i) { // sort tasks by priority (higher value first)
             int maxIdx = i;
             for (int j = i + 1; j < taskCount; ++j) {
                 if (tasks[j]->getPriority() > tasks[maxIdx]->getPriority())
@@ -31,12 +41,13 @@ class PriorityRR : public Scheduler {
             int currentPriority = -1;
 
             for (int i = 0; i < taskCount; ++i) {
-                if (tasks[i]->getRemainingTime() == 0) continue;
+                if (tasks[i]->getRemainingTime() == 0)  // skip completed tasks
+                        continue;
 
                 if (currentPriority == -1)
                     currentPriority = tasks[i]->getPriority();
 
-                if (tasks[i]->getPriority() != currentPriority)
+                if (tasks[i]->getPriority() != currentPriority) // only serve tasks with current group priority
                     continue;
 
                 int remaining = tasks[i]->getRemainingTime();
@@ -51,7 +62,7 @@ class PriorityRR : public Scheduler {
                 currentTime += slice;
 
                 if (tasks[i]->getRemainingTime() == 0) {
-                    completion[i] = currentTime;
+                    completion[i] = currentTime; // record when task finishes
                     finished++;
                 }
             }
