@@ -3,11 +3,17 @@
 
 using namespace std;
 
+/** @class Priority
+ *  @brief priority-based CPU scheduler (non-pre-emptive).
+ *
+ *  tasks are sorted in descending order of numeric priority (higher value = higher priority).
+ *  ties are resolved by original order (stable selection sort).
+ */
 class Priority : public Scheduler {
     public:
     void schedule(Task* tasks[], int taskCount) override {
        for(int i =0;i<taskCount-1;i++){
-            int maxIdx = i; //Index of highest-priority task seen so far
+            int maxIdx = i; //index of highest-priority task seen so far
            for(int j=i+1;j<taskCount;j++){
                if(tasks[j]->getPriority() > tasks[maxIdx]->getPriority()) //if we find a task with a higher numeric priority → update maxIdx
                    maxIdx = j;
