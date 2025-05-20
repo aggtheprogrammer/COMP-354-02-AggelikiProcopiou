@@ -3,8 +3,15 @@
 
 using namespace std;
 
+/** @class SFJ
+ *  @brief shortest Job First scheduler (non-pre-emptive).
+ */
 class SFJ: public Scheduler{
     public:
+    /** @brief executes SJF scheduling on the task array and prints stats.
+     *  @param tasks      array of Task pointers (arrival time assumed 0).
+     *  @param taskCount  number of tasks in the array.
+     */
     void schedule(Task* tasks[], int taskCount) override {
         for(int i=0;i<taskCount;i++){ // sort tasks based on CPU burst time
             int minIdx = i;
