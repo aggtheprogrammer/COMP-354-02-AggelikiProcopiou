@@ -11,6 +11,10 @@ using namespace std;
  */
 class Priority : public Scheduler {
     public:
+    /** @brief Runs Priority scheduling on the task list and prints results.
+     *  @param tasks      Array of Task pointers (not null).
+     *  @param taskCount  Number of tasks in the array.
+     */
     void schedule(Task* tasks[], int taskCount) override {
        for(int i =0;i<taskCount-1;i++){
             int maxIdx = i; //index of highest-priority task seen so far
