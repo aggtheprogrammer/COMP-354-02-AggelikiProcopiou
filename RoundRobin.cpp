@@ -3,25 +3,35 @@
 
 using namespace std;
 
+/** @class RoundRobin
+ *  @brief implements Round-Robin scheduling algorithm with a fixed time quantum.
+ *
+ *  each task is given a time slice of 10 ms in a cyclic order. The scheduler continues
+ *  to loop through tasks until all are complete. Assumes all tasks arrive at time 0.
+ */
 class RoundRobin : public Scheduler {
     public:
+    /** @brief executes Round-Robin scheduling and prints stats.
+     *  @param tasks      array of Task pointers.
+     *  @param taskCount  number of tasks in the array.
+     */
     void schedule(Task* tasks[], int taskCount) override {
         const int QUANTUM = 10;
         int currentTime = 0;
         int finished = 0;
         int* completion = new int[taskCount];
 
-        for (int i = 0; i < taskCount; ++i)
+        for (int i = 0; i < taskCount; ++i) 
             completion[i] = -1;
 
 
         cout << "Round-Robin Scheduling (Time Quantum = 10 ms):"<<endl;
 
-        while (finished < taskCount) {
+        while (finished < taskCount) { // loop until all tasks are finished
             for (int i = 0; i < taskCount; ++i) {
                 int remaining = tasks[i]->getRemainingTime();
 
-                if (remaining == 0) 
+                if (remaining == 0)  // task already completed
                     continue;
 
                 int slice = min(QUANTUM, remaining);
@@ -30,10 +40,10 @@ class RoundRobin : public Scheduler {
                      << "  Time Slice: " << slice << " ms"
                      << "  Remaining: " << remaining - slice << " ms" << endl;
 
-            tasks[i]->setRemainingTime(remaining - slice);
+            tasks[i]->setRemainingTime(remaining - slice); 
             currentTime += slice;
 
-            if (tasks[i]->getRemainingTime() == 0) {
+            if (tasks[i]->getRemainingTime() == 0) { 
                 completion[i] = currentTime;
                 finished++;
 
@@ -64,7 +74,7 @@ class RoundRobin : public Scheduler {
         cout << "\nAverage Waiting Time   : " << avgWait << " ms" << endl;
         cout << "Average Turnaround Time: " << avgTurn << " ms" << endl;
 
-        delete[] completion;
+        delete[] completion; //clean up dynamically allocated memory
 
     }
 };
