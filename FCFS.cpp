@@ -3,8 +3,15 @@
 
 using namespace std;
 
+/** @class FCFS
+ *  @brief First-Come First-Served scheduler (non-pre-emptive).
+ */
 class FCFS : public Scheduler {
     public:
+    /** @brief Execute FCFS on the provided task array and print stats.
+     *  @param tasks      Array of Task pointers (arrival time assumed 0).
+     *  @param taskCount  Number of tasks in the array.
+     */
     void schedule(Task* tasks[], int taskCount) override {
         int currentTime=0;
         int totalWaitingTime=0;
