@@ -65,6 +65,23 @@ class PriorityRR : public Scheduler {
             int burst = tasks[i]->getCpuBurst();
             int turn = completion[i];
             int wait = turn - burst;
+
+            cout << tasks[i]->getName()
+                 << "  Priority: " << tasks[i]->getPriority()
+                 << "  Burst: " << burst << " ms" << endl
+                 << "  Waiting: " << wait << " ms" << endl
+                 << "  Turnaround: " << turn << " ms" << endl;
+
+            totalWait += wait;
+            totalTurn += turn;
         }
+
+        double avgWait = double(totalWait) / taskCount;
+        double avgTurn = double(totalTurn) / taskCount;
+
+        cout << "\nAverage Waiting Time   : " << avgWait << " ms" << endl;
+        cout << "Average Turnaround Time: " << avgTurn << " ms" << endl;
+
+        delete[] completion; //clean up dynamically allocated memory
     }
 };
