@@ -13,9 +13,9 @@ class SFJ: public Scheduler{
                     minIdx = j;
          }
             if (minIdx != i) { // swaps the tasks
-                Task* tmp   = tasks[i];
-                tasks[i]    = tasks[minIdx]; 
-                tasks[minIdx] = tmp;
+                Task* temp = tasks[i];
+                tasks[i]= tasks[minIdx]; 
+                tasks[minIdx] = temp;
             }
     }
     /*after sorting, we can calculate waiting time and turnaround time*/ 
@@ -26,14 +26,14 @@ class SFJ: public Scheduler{
     cout << "SJF Scheduling Order:\n";
 
     for (int i = 0; i < taskCount; i++) { // iterate through the sorted tasks
-            Task* t          = tasks[i];
-            int waitTime     = currentTime;
-            int turnTime     = waitTime + t->getCpuBurst();
+            Task* t = tasks[i];
+            int waitTime= currentTime;
+            int turnTime= waitTime + t->getCpuBurst();
 
-            cout << "Running Task: "   << t->getName()
-            << " | Burst: "       << t->getCpuBurst()   << " ms"
-            << " | Waiting: "     << waitTime           << " ms"
-            << " | Turnaround: "  << turnTime           << " ms"<<endl;
+            cout << "Running Task: "<< t->getName()
+            << "  Burst: "<< t->getCpuBurst()<< " ms"
+            << "  Waiting: "<< waitTime<< " ms"
+            << "  Turnaround: "<< turnTime<< " ms"<<endl;
 
             currentTime+= t->getCpuBurst(); // updates current time
             totalWait+= waitTime;

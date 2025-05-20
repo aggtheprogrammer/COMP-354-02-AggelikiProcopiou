@@ -17,11 +17,10 @@ class FCFS : public Scheduler {
              int waitingTime = currentTime; 
             int turnaroundTime = waitingTime + task->getCpuBurst();
 
-            cout << "Running Task: " << task->getName() 
-                 << " | Burst Time: " << task->getCpuBurst() 
-                 << "ms | Waiting Time: " << waitingTime 
-                 << "ms | Turnaround Time: " << turnaroundTime 
-                 << "ms"<<endl;
+            cout << "Running Task: " << task->getName()
+                 << "  Burst Time: " << task->getCpuBurst()<<" ms"
+                 << "  Waiting Time: " << waitingTime <<" ms"
+                 << "  Turnaround Time: " << turnaroundTime<<" ms"<<endl;
 
             currentTime += task->getCpuBurst(); // Update current time
             totalWaitingTime += waitingTime;

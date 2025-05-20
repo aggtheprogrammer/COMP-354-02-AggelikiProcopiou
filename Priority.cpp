@@ -30,10 +30,10 @@ class Priority : public Scheduler {
             int turnTime= waitTime + t->getCpuBurst();
         
             cout << "Running Task: "<< t->getName()
-                 << " | Priority: "<< t->getPriority()
-                 << " | Burst: "<< t->getCpuBurst()<< " ms"
-                 << " | Waiting: "<< waitTime<< " ms"
-                 << " | Turnaround: "<< turnTime<< " ms"<<endl;
+                 << "  Priority: "<< t->getPriority()
+                 << "  Burst: "<< t->getCpuBurst()<< " ms"
+                 << "  Waiting: "<< waitTime<< " ms"
+                 << "  Turnaround: "<< turnTime<< " ms"<<endl;
 
             currentTime+= t->getCpuBurst();
             totalWait+= waitTime;

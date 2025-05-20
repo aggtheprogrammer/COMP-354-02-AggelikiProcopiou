@@ -7,7 +7,7 @@ using namespace std;
 
 class Scheduler {
 public:
-    virtual void schedule(Task* tasks[], int taskCount) = 0;
+    virtual void schedule(Task* tasks[], int taskCount) = 0; 
     virtual ~Scheduler() = default;
 };
 
