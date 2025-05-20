@@ -25,6 +25,46 @@ class PriorityRR : public Scheduler {
                 tasks[maxIdx] = temp;
             }
         }
-        
+        cout << "Priority Round-Robin Scheduling (Time Quantum = 10 ms):" << endl;
+
+        while (finished < taskCount) {
+            int currentPriority = -1;
+
+            for (int i = 0; i < taskCount; ++i) {
+                if (tasks[i]->getRemainingTime() == 0) continue;
+
+                if (currentPriority == -1)
+                    currentPriority = tasks[i]->getPriority();
+
+                if (tasks[i]->getPriority() != currentPriority)
+                    continue;
+
+                int remaining = tasks[i]->getRemainingTime();
+                int slice = min(QUANTUM, remaining);
+                
+                cout << "Running Task: " << tasks[i]->getName()
+                     << "  Priority: " << tasks[i]->getPriority()
+                     << "  Time Slice: " << slice << " ms"
+                     << "  Remaining: " << remaining - slice << " ms" << endl;
+
+                tasks[i]->setRemainingTime(remaining - slice);
+                currentTime += slice;
+
+                if (tasks[i]->getRemainingTime() == 0) {
+                    completion[i] = currentTime;
+                    finished++;
+                }
+            }
+        }
+
+        long long totalWait = 0;
+        long long totalTurn = 0;
+
+        cout << "\nPer-task Summary:" << endl;
+        for (int i = 0; i < taskCount; ++i) {
+            int burst = tasks[i]->getCpuBurst();
+            int turn = completion[i];
+            int wait = turn - burst;
+        }
     }
 };
