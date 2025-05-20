@@ -1,5 +1,6 @@
 #include "Scheduler.h"
 #include<iostream>
+#include<cassert>
 
 using namespace std;
 
@@ -16,6 +17,9 @@ class PriorityRR : public Scheduler {
      *  @param taskCount  Number of tasks in the array.
      */
     void schedule(Task* tasks[], int taskCount) override {
+        assert(tasks != nullptr && "Task array must not be null");
+        assert(taskCount > 0 && "Task count must be greater than zero");
+
         const int QUANTUM = 10;
         int currentTime = 0;
         int finished = 0;

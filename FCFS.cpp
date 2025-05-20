@@ -1,5 +1,6 @@
 #include "Scheduler.h"
 #include<iostream>
+#include<cassert>
 
 using namespace std;
 
@@ -13,6 +14,9 @@ class FCFS : public Scheduler {
      *  @param taskCount  Number of tasks in the array.
      */
     void schedule(Task* tasks[], int taskCount) override {
+        assert(tasks != nullptr && "Task array must not be null");
+        assert(taskCount > 0 && "Task count must be greater than zero");
+
         int currentTime=0;
         int totalWaitingTime=0;
         int totalTurnaroundTime=0;

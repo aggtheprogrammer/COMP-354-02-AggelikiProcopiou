@@ -1,5 +1,6 @@
 #include "Scheduler.h"
 #include<iostream>
+#include<cassert>
 
 using namespace std;
 
@@ -16,6 +17,9 @@ class Priority : public Scheduler {
      *  @param taskCount  Number of tasks in the array.
      */
     void schedule(Task* tasks[], int taskCount) override {
+        assert(tasks != nullptr && "Task array must not be null");
+        assert(taskCount > 0 && "Task count must be greater than zero");
+
        for(int i =0;i<taskCount-1;i++){
             int maxIdx = i; //index of highest-priority task seen so far
            for(int j=i+1;j<taskCount;j++){

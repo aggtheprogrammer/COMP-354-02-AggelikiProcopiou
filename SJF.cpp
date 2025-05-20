@@ -1,21 +1,25 @@
 #include "Scheduler.h"
 #include<iostream>
+#include<cassert>
 
 using namespace std;
 
-/** @class SFJ
- *  @brief shortest Job First scheduler (non-pre-emptive).
+/** @class SJF
+ *  @brief Shortest Job First scheduler (non-pre-emptive).
  */
-class SFJ: public Scheduler{
+class SJF: public Scheduler{
     public:
     /** @brief executes SJF scheduling on the task array and prints stats.
      *  @param tasks      array of Task pointers (arrival time assumed 0).
      *  @param taskCount  number of tasks in the array.
      */
     void schedule(Task* tasks[], int taskCount) override {
+        assert(tasks != nullptr && "Task array must not be null");
+        assert(taskCount > 0 && "Task count must be greater than zero");
+
         for(int i=0;i<taskCount;i++){ // sort tasks based on CPU burst time
             int minIdx = i;
-            for (int j = i + 1; j < taskCount-1; ++j) {
+            for (int j = i + 1; j < taskCount; ++j) {
                 if (tasks[j]->getCpuBurst() < tasks[minIdx]->getCpuBurst()) // find the task with the minimum CPU burst time
                     minIdx = j;
          }
