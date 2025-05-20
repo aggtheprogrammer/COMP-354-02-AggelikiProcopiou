@@ -1,7 +1,6 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 #include "Task.h"
-#include<iostream>
 
 using namespace std;
 
@@ -15,7 +14,7 @@ public:
      *  @param taskCount  Number of tasks.
      */
     virtual void schedule(Task* tasks[], int taskCount) = 0; 
-    
+
     /** @brief Virtual destructor for proper cleanup of derived classes. */
     virtual ~Scheduler() = default;
 };
