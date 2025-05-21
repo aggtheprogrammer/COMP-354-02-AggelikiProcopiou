@@ -77,7 +77,17 @@ int main(){
             }
 
         tasks[taskCount++] = new Task(name, prio, burst);
+
     }
     assert(taskCount > 0 && "No valid tasks loaded");
 
+    scheduler->schedule(tasks, taskCount);
+
+    for (int i = 0; i < taskCount; i++) 
+        delete tasks[i];
+
+    fin.close();
+    delete scheduler;
+
+    return 0;
 }
