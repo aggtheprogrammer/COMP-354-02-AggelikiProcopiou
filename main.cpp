@@ -1,6 +1,6 @@
 /**
  * @file   main.cpp
- * @author Aggeliki Procopiou
+ * @author Aggeliki Procopiou  
  * @date   2025-05-21
  * @brief  Demonstrates five CPU-scheduling algorithms.
  *

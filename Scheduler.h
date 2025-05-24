@@ -7,7 +7,7 @@
 #define SCHEDULER_H
 #include "Task.h"
 
-using namespace std;
+using namespace std; 
 
 /** @class Scheduler
  *  @brief Abstract base class for all CPU scheduling algorithms.

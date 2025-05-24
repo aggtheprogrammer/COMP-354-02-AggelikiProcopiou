@@ -11,7 +11,7 @@ using namespace std;
 /** @class Task
  *  @brief Represents a CPU task with a name, priority, burst time, and remaining time.
  */
-class Task {
+class Task { 
     private:
     string name;
     int priority,cpuBurst,remainingTime;

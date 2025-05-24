@@ -7,7 +7,7 @@
 #include<iostream>
 #include<cassert>
 
-using namespace std;
+using namespace std; 
 
 /** @class SJF
  *  @brief Shortest Job First scheduler (non-pre-emptive).
