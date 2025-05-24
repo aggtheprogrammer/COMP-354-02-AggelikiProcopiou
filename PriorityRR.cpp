@@ -1,3 +1,8 @@
+/**
+ * @file    PriorityRR.cpp
+ * @brief   Priority-based Round-Robin scheduler (higher number -> higher priority).
+ */
+
 #include "Scheduler.h"
 #include<iostream>
 #include<cassert>

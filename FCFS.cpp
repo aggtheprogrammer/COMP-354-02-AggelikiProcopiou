@@ -1,3 +1,10 @@
+/**
+ * @file    FCFS.cpp
+ * @brief   First-Come-First-Served scheduler implementation.
+ *
+ * Non-pre-emptive: tasks run strictly in arrival order.
+ */
+
 #include "Scheduler.h"
 #include<iostream>
 #include<cassert>

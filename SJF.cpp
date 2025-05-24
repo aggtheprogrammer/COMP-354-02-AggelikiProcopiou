@@ -1,3 +1,8 @@
+/**
+ * @file    SJF.cpp
+ * @brief   Shortest-Job-First scheduler implementation (non-pre-emptive).
+ */
+
 #include "Scheduler.h"
 #include<iostream>
 #include<cassert>

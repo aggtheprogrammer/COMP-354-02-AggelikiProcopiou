@@ -1,3 +1,8 @@
+/**
+ * @file    RoundRobin.cpp
+ * @brief   Round-Robin scheduler with fixed 10 ms quantum.
+ */
+
 #include "Scheduler.h"
 #include<iostream>
 #include<cassert>
