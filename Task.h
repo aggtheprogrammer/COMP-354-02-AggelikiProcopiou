@@ -1,3 +1,8 @@
+/**
+ * @file    Task.h
+ * @brief   Data model for a schedulable task.
+ */
+
 #ifndef TASK_H
 #define TASK_H
 

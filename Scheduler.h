@@ -1,3 +1,8 @@
+/**
+ * @file    Scheduler.h
+ * @brief   Abstract interface for CPU-scheduling algorithms.
+ */
+
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 #include "Task.h"
